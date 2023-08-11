@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 bookVault = Flask(__name__)
@@ -23,6 +23,10 @@ cursor.execute('''
     )
 ''')
 
+# Open main Reading List page
+@bookVault.route("/")
+def index():
+    return render_template("index.html")
 
 # Add book to database
 @bookVault.route('/add-to-database', methods=['POST'])
