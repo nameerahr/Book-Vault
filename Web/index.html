@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang:"en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content = "Razi Nameerah">
+        <title>Book Vault </title>
+        <link rel="stylesheet" href="./css/style.css">
+    </head>
+    
+    <body>
+        <div class="sidenav">
+            <div id="title">
+                <h1> <span class = "highlight">Book</span> Vault </h1>
+            </div>
+            <div class="navContainer"> 
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Search Book Title...">
+                    <button type="submit">Search</button>
+                </form>
+                <a class="current" href="index.html">READING LIST</a>
+                <a href="completedBooks.html">COMPLETED</a>
+                <a href="favouriteBooks.html">FAVOURITES</a>
+            </div>
+        </div>
+
+        <div id="searchContainer">
+            <form id="searchPage">
+                <input type="text" id="searchListInput" placeholder="Search Reading List...">
+            </form>
+        </div>
+
+        <section id="boxes">
+            <div class="container"></div>
+        </section>  
+
+        <div id="background"></div>
+
+        <div id="delete-confirmation">
+            <p>Are you sure you want to delete <span id="delete-title"></span> from your library?</p>
+            <button id="confirm-button">Yes</button>
+            <button id="cancel-button">No</button>
+        </div>
+
+        <div id="success-message"><span id="success-book-title"></span> <span id="function"></span> <span id="page-title"></span>!</div>
+        <div id="delete-message"><span id="delete-book-title"></span> removed from library!</div>
+        <div id="error-message">Error! Please try again.</div>
+
+        <footer>
+            <p> Razi Nameerah, Copyright &copy; 2023 </p>
+        </footer>
+
+        <script src="script.js"></script>
+        <script>
+            displayPageBooks('completed', 'FALSE');
+            searchBooksOnPage();
+        </script>
+    </body>
+</html>
