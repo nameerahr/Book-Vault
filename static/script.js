@@ -19,7 +19,7 @@ function getSearchResults(searchQuery) {
         sessionStorage.setItem('searchQuery', searchQuery);
   
         // Go to the Search Results page
-        window.location.href = 'searchResults.html';
+        window.location.href = '/search-results';
       })
       .catch(error => console.error('Error getting search results:', error));
 }
@@ -52,7 +52,7 @@ function displaySearchResults() {
         if (book.cover_i) {
           cover = `http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
         } else {
-          cover = './img/defaultCover.jpg';
+          cover = "/img/defaultCover.jpg";
         }
 
         displaySearchBook(cover, book.title, author);  
@@ -472,9 +472,9 @@ function updateBook(propertyName, propertyValue, bookTitle, bookAuthor, bookDiv)
       /* Remove book from current page if not on Favourites page or if unfavouriting on favourites page, 
       if on Favourites page and changing property, toggle icon between checkmark and arrow, 
       otherwise toggle favourite star icon */
-      if((propertyName == 'completed' && !currentUrl.includes('favouriteBooks.html')) || (propertyName == 'favourite' && currentUrl.includes('favouriteBooks.html'))){ 
+      if((propertyName == 'completed' && !currentUrl.includes('favourite-books')) || (propertyName == 'favourite' && currentUrl.includes('favourite-books'))){ 
         bookDiv.remove();
-      }else if(propertyName == 'completed' && currentUrl.includes('favouriteBooks.html')){
+      }else if(propertyName == 'completed' && currentUrl.includes('favourite-books')){
         if(propertyValue == "FALSE"){ // moving to reading list, icon change from arrow to check
             const arrowToCheckmark = bookDiv.querySelector('.arrow');
             arrowToCheckmark.className = 'checkmark'; 

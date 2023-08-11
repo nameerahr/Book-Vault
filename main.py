@@ -1,8 +1,10 @@
 import sqlite3
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
+import os
 
-bookVault = Flask(__name__)
+# bookVault = Flask(__name__)
+bookVault = Flask(__name__, static_folder='static')
 
 # Allows requests to be sent to server from different domains
 CORS(bookVault)
@@ -24,9 +26,34 @@ cursor.execute('''
 ''')
 
 # Open main Reading List page
-@bookVault.route("/")
+@bookVault.route('/')
 def index():
     return render_template("index.html")
+
+
+# Open Completed page
+@bookVault.route('/completed-books')
+def completed():
+    return render_template("completedBooks.html")
+
+
+# Open Favourites page
+@bookVault.route('/favourite-books')
+def favourites():
+    return render_template("favouriteBooks.html")
+
+
+# Open Search Results page
+@bookVault.route('/search-results')
+def searchResults():
+    return render_template("searchResults.html")
+
+
+# Send default cover image
+@bookVault.route('/img/defaultCover.jpg')
+def sendImage():
+    return send_from_directory('static/img', 'defaultCover.jpg')
+
 
 # Add book to database
 @bookVault.route('/add-to-database', methods=['POST'])
@@ -159,4 +186,6 @@ def updateBook():
 
 
 if __name__ == '__main__':
-    bookVault.run()
+    # bookVault.run()
+    port = int(os.environ.get('PORT', 5000))
+    bookVault.run(host="0.0.0.0", port=port)

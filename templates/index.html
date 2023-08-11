@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content = "Razi Nameerah">
         <title>Book Vault </title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="../static/style.css">
     </head>
     
     <body>
@@ -18,9 +18,9 @@
                     <input type="text" id="searchInput" placeholder="Search Book Title...">
                     <button type="submit">Search</button>
                 </form>
-                <a class="current" href="index.html">READING LIST</a>
-                <a href="completedBooks.html">COMPLETED</a>
-                <a href="favouriteBooks.html">FAVOURITES</a>
+                <a class="current" href="{{ url_for('index') }}">READING LIST</a>
+                <a href="{{ url_for('completed') }}">COMPLETED</a>
+                <a href="{{ url_for('favourites') }}">FAVOURITES</a>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             <p> Razi Nameerah, Copyright &copy; 2023 </p>
         </footer>
 
-        <script src="script.js"></script>
+        <script src="../static/script.js"></script>
         <script>
             displayPageBooks('completed', 'FALSE');
             searchBooksOnPage();
