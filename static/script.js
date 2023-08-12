@@ -43,7 +43,7 @@ function displaySearchResults() {
 
         // Get author's name or "Unknown Author" if name is unavailable
         if (book.author_name && book.author_name.length > 0) {
-          author = book.author_name.join(', '); // join multiple authors together with comma
+          author = book.author_name.join(', '); // Join multiple authors together with comma
         } else {
           author = 'Unknown Author';
         }
@@ -97,7 +97,7 @@ function displaySearchBook(bookCover, title, author) {
     container.appendChild(newBookDiv);
     activeDropDown = null;
 
-    // add dropdown menu for adding to library
+    // Add dropdown menu for adding to library
     newSpanAddIcon.addEventListener('click', function(event) {
       // Remove any active dropdown menus on the page
       if(activeDropDown) {
@@ -475,7 +475,7 @@ function updateBook(propertyName, propertyValue, bookTitle, bookAuthor, bookDiv)
       if((propertyName == 'completed' && !currentUrl.includes('favourite-books')) || (propertyName == 'favourite' && currentUrl.includes('favourite-books'))){ 
         bookDiv.remove();
       }else if(propertyName == 'completed' && currentUrl.includes('favourite-books')){
-        if(propertyValue == "FALSE"){ // moving to reading list, icon change from arrow to check
+        if(propertyValue == "FALSE"){ // Moving to reading list, icon change from arrow to check
             const arrowToCheckmark = bookDiv.querySelector('.arrow');
             arrowToCheckmark.className = 'checkmark'; 
             arrowToCheckmark.title = 'Add to Completed Books'
@@ -483,7 +483,7 @@ function updateBook(propertyName, propertyValue, bookTitle, bookAuthor, bookDiv)
             arrowToCheckmark.onclick = function() { 
               bookCompleted(this); 
             }; 
-          }else{ // moving to completed, icon change from checkmark to arrow
+          }else{ // Moving to completed, icon change from checkmark to arrow
             const checkmarkToArrow = bookDiv.querySelector('.checkmark');
             checkmarkToArrow.className = 'arrow'; 
             checkmarkToArrow.title = 'Move to Reading List'
@@ -577,7 +577,7 @@ function displayPageBooks(property, propertyVal){
 
       if(property == "favourite"){
         noResultsMessage.textContent = 'No favourited books. Search for books using the search field and add them to favourites.';
-      }else{ // property is "completed" (either true or false)
+      }else{ // Property is "completed" (either true or false)
         if(propertyVal == "TRUE"){
           noResultsMessage.textContent = 'No completed books. Search for books to add using the search field.';
         }else{

@@ -1,10 +1,8 @@
 import sqlite3
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
-import os
 
-# bookVault = Flask(__name__)
-bookVault = Flask(__name__, static_folder='static')
+bookVault = Flask(__name__)
 
 # Allows requests to be sent to server from different domains
 CORS(bookVault)
@@ -86,8 +84,10 @@ def addToDatabase():
                            (title, author, coverPath, completed, favourited))
             message = 'Book added to the database'
 
-        # Commit the changes to the database and close connection
-        connection.commit()
+            # Commit the changes to the database
+            connection.commit()
+
+        # Close database connection
         connection.close()
 
         return jsonify({'message': message}), 200
@@ -186,6 +186,4 @@ def updateBook():
 
 
 if __name__ == '__main__':
-    # bookVault.run()
-    port = int(os.environ.get('PORT', 5000))
-    bookVault.run(host="0.0.0.0", port=port)
+    bookVault.run()
