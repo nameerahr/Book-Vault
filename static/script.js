@@ -191,7 +191,7 @@ function addBookToDatabase(bookCover, bookTitle, bookAuthor, bookCompleted, book
       favourited: bookFavourited
     };
   
-    fetch('http://localhost:5000/add-to-database', {
+    fetch('/add-to-database', {
       method: 'POST',
       body: JSON.stringify(bookInfo),
       headers: {
@@ -432,7 +432,7 @@ function updateBook(propertyName, propertyValue, bookTitle, bookAuthor, bookDiv)
       author: bookAuthor
     };
 
-    fetch('http://localhost:5000/update-book', {
+    fetch('/update-book', {
       method: 'POST',
       body: JSON.stringify(bookInfo),
       headers: {
@@ -527,7 +527,7 @@ function deleteBook(bookTitle, bookAuthor, bookDiv) {
       author: bookAuthor
     };
 
-    fetch('http://localhost:5000/delete-book', {
+    fetch('/delete-book', {
       method: 'POST',
       body: JSON.stringify(bookInfo),
       headers: {
@@ -565,7 +565,7 @@ function deleteBook(bookTitle, bookAuthor, bookDiv) {
 // Display books on page according to a property name and value from database 
 function displayPageBooks(property, propertyVal){
 
-  fetch("http://localhost:5000/get-books?property="+property+"&propertyValue="+propertyVal)
+  fetch("/get-books?property="+property+"&propertyValue="+propertyVal)
   .then(response => response.json())
   .then(data => {
 
